@@ -26,9 +26,6 @@ class UserRegisterForm(forms.ModelForm):
         required=False,
         widget=forms.TextInput(attrs={"class": "form-control"}),
     )
-    subscription = forms.ChoiceField(
-        choices=Profile.ACCOUNT_SUBSCRIPTION, required=False
-    )
 
     class Meta:
         model = User
@@ -69,12 +66,6 @@ class UserRegisterForm(forms.ModelForm):
 
         if commit:
             user.save()
-            # Profile is already created, update values with data in form
-            profile = user.profile
-            subscription = self.cleaned_data.get("subscription")
-            # Add data
-            profile.subscription = subscription if subscription else "F"
-            profile.save()
         return user
 
 

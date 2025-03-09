@@ -4,7 +4,7 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-from utils.base.general import invalid_str, convert_bytes_to_mb
+from utils.general import invalid_str, convert_bytes_to_mb
 
 
 def validate_special_char(value):

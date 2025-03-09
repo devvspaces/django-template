@@ -5,10 +5,8 @@ from django.urls import include, path
 
 
 urlpatterns = [
-    path('admin-59b87/', admin.site.urls),
-    path('', include('index.urls')),
+    path('admin-1111111/', admin.site.urls),
     path('', include('authapp.urls')),
-    path('app/', include('dashboard.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

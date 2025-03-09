@@ -1,0 +1,72 @@
+version: '3.5'
+services:
+  webapp:
+    build: .
+    ports:
+      - "8000:80"
+      - "5555:5555"
+    container_name: webapp
+    volumes:
+      - db-data:/app/src
+      - static_volume:/app/src/static
+      - media_volume:/app/src/media
+    env_file:
+      - ./src/.env
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.base
+    working_dir: /app/src
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - loki
+    networks:
+      - app-network
+
+  redis-stack:
+    image: redis/redis-stack:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    environment:
+      - REDIS_ARGS=--appendonly yes
+    networks:
+      - app-network
+
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - "3100:3100"
+    volumes:
+      - loki_data:/loki
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - app-network
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - loki
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    networks:
+      - app-network
+
+volumes:
+  db-data:
+  static_volume:
+  media_volume:
+  redis_data:
+  loki_data:
+  grafana_data:
+
+networks:
+  app-network:
+    driver: bridge

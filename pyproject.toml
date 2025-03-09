@@ -5,8 +5,12 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "celery>=5.4.0",
     "django>=5.1.4",
+    "django-celery-results>=2.5.1",
+    "django-structlog>=9.0.1",
     "gevent>=24.11.1",
     "gunicorn>=23.0.0",
     "python-decouple>=3.8",
+    "python-logging-loki>=0.3.1",
 ]

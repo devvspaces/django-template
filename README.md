@@ -1,1 +1,1 @@
-# PicHub
+# APP_NAME

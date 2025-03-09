@@ -36,8 +36,8 @@ class UserAdmin(BaseUserAdmin):
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('username', 'subscription',)
-    list_filter = ('subscription', 'created',)
+    list_display = ('username',)
+    list_filter = ('created',)
     ordering = ('-created',)
 
 
