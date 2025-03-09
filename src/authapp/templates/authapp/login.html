@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'index/imgs/logo-light.svg' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'index/imgs/logo-light.svg' %}" type="image/x-icon">
+
+    <title>BIS - Login</title>
+
+    <!--font-awesome-css-->
+    <link rel="stylesheet" href="{% static 'dashboard/vendor/fontawesome/css/all.css' %}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- tabler icons-->
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/vendor/tabler-icons/tabler-icons.css' %}">
+
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/vendor/bootstrap/bootstrap.min.css' %}">
+
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/style.css' %}">
+
+    <!-- Responsive css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/responsive.css' %}">
+
+</head>
+
+<body>
+    <div class="app-wrapper d-block">
+        <div class="">
+            <!-- Body main section starts -->
+            <main class="w-100">
+                <!-- sign in start -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-7 col-xl-8 d-none d-lg-block p-0">
+                            <div class="image-contentbox">
+                                <img src="{% static 'dashboard/images/login/01.png' %}" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-xl-4 p-0 bg-white">
+                            <div class="form-container">
+                                <form method="post" class="app-form">
+                                    <!-- django messages -->
+                                    <div>
+                                        {% for message in messages %}
+                                        <div class="alert alert-{{ message.tags|default:'info' }}" role="alert">
+                                            {{ message }}
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-5 text-center text-lg-start">
+                                                <h2 class="text-primary f-w-600">Welcome Back! </h2>
+                                                <p>Sign in with your username and password</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="username" class="form-label">Username</label>
+                                                {{ form.username }}
+                                                {% for error in form.username.errors %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">Password</label>
+                                                {{ form.password }}
+                                                {% for error in form.password.errors %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <button role="button" class="btn btn-primary w-100">Sign In</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="text-center text-lg-start">
+                                            Don't Have A Account? <a href="{% url 'auth:signup' %}"
+                                                class="link-primary text-decoration-underline">
+                                                Sign up</a>
+                                        </div>
+                                    </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <!-- sign in end -->
+        </main>
+        <!-- Body main section ends -->
+    </div>
+    </div>
+    <!-- latest jquery-->
+    <script src="{% static 'dashboard/js/jquery-3.6.3.min.js' %}"></script>
+
+    <!-- Bootstrap js-->
+    <script src="{% static 'dashboard/vendor/bootstrap/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

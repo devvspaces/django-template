@@ -1,0 +1,70 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{% static 'index/imgs/logo-light.svg' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'index/imgs/logo-light.svg' %}" type="image/x-icon">
+
+  <title>BIS - 404</title>
+
+  <!--font-awesome-css-->
+  <link rel="stylesheet" href="{% static 'dashboard/vendor/fontawesome/css/all.css' %}">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- tabler icons-->
+  <link rel="stylesheet" type="text/css" href="{% static 'dashboard/vendor/tabler-icons/tabler-icons.css' %}">
+
+  <!-- Bootstrap css-->
+  <link rel="stylesheet" type="text/css" href="{% static 'dashboard/vendor/bootstrap/bootstrap.min.css' %}">
+
+  <!-- App css-->
+  <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/style.css' %}">
+
+  <!-- Responsive css-->
+  <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/responsive.css' %}">
+
+</head>
+
+<body>
+  <div class="error-container p-0">
+    <div class="container">
+      <div>
+        <div>
+          <img src="{% static 'dashboard/images/background/error-404.png' %}" class="img-fluid" alt="">
+        </div>
+        <div class="mb-3">
+          <h1><span class="f-w-600">SORRY,</span> <span class="text-primary">PAGE NOT FOUND</span></h1>
+        </div>
+        <div class="mb-3">
+          <div class="row">
+            <div class="col-lg-8 offset-lg-2 ">
+              <p class="text-center text-secondary f-w-500">The page you are looking for not available!</p>
+            </div>
+          </div>
+        </div>
+        <a role="button" href="/" class="btn btn-primary"><i class="ti ti-home"></i> Back To Home</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- essential   -->
+  <!-- latest jquery-->
+  <script src="{% static 'dashboard/js/jquery-3.6.3.min.js' %}"></script>
+
+  <!-- Bootstrap js-->
+  <script src="{% static 'dashboard/vendor/bootstrap/bootstrap.bundle.min.js' %}"></script>
+
+
+</body>
+
+</html>
