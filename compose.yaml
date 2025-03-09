@@ -7,18 +7,21 @@ services:
       - "5555:5555"
     container_name: webapp
     volumes:
-      - db-data:/app/src
+      - db-data:/app/src/db
       - static_volume:/app/src/static
       - media_volume:/app/src/media
     env_file:
       - ./src/.env
     environment:
       - DJANGO_SETTINGS_MODULE=config.settings.base
+      - LOKI_HOST=http://loki:3100
+      - REDIS_URL=redis://redis-stack:6379/0
     working_dir: /app/src
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
       - loki
+      - redis-stack
     networks:
       - app-network
 

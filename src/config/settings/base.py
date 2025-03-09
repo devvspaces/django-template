@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     
     # Plugins
     "django_structlog",
-    # 'django_celery_results',
+    'django_celery_results',
     
     # Apps
     'authapp',
@@ -71,15 +71,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 DB_TYPE = config("DB_TYPE", default="sqlite3")
 if DB_TYPE == "sqlite3":
+    DB_PATH = BASE_DIR / "db"
+    DB_PATH.mkdir(exist_ok=True)
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
+            "NAME": DB_PATH / "db.sqlite3",
             "OPTIONS": {
                 "timeout": 100,
             }
         }
     }
+
 if DB_TYPE == "postgresql":
     DATABASES = {
         "default": {
